@@ -1,0 +1,27 @@
+{
+    "builders": [
+        {
+            "ami_name": "tools-ami-example / {{isotime \"2006-01-02 030405\"}}",
+            "iam_instance_profile": "devprod-packer-default-profile",
+            "instance_type": "t2.micro",
+            "source_ami_filter": {
+                "filters": {
+                    "virtualization-type": "hvm",
+                    "name": "amzn2-ami-hvm-2.0.*-x86_64-ebs",
+                    "root-device-type": "ebs"
+                },
+                "owners": [
+                    "137112412989"
+                ],
+                "most_recent": true
+            },
+            "ssh_username": "ec2-user",
+            "tags": {
+                "Owner": "tools@confluent.io",
+                "Source": "confluentinc/tools-ami-example",
+                "Timestamp": "{{timestamp}}"
+            },
+            "type": "amazon-ebs"
+        }
+    ]
+}
